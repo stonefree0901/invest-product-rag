@@ -48,6 +48,9 @@ class MistralOCR:
     @staticmethod
     def _get_env(key: str) -> Optional[str]:
         """Get environment variable."""
+        import os
+        return os.getenv(key)
+    
     @staticmethod
     def _encode_pdf_to_base64(pdf_path: Path) -> str:
         """
@@ -120,21 +123,31 @@ class MistralOCR:
                     "type": "document_url",
                     "document_url": f"data:application/pdf;base64,{pdf_data}"
                 },
+                table_format="markdown",  # Changed from "html" to "markdown" for better RAG integration
+                extract_header=True,
+                extract_footer=True,
                 include_image_base64=True
             )
 
-            # Extract markdown content
-            markdown_content = ocr_response.pages[0].markdown
+            # Extract and merge markdown content from all pages
             page_count = len(ocr_response.pages)
+            markdown_content = "\n\n".join([page.markdown for page in ocr_response.pages])
 
-            # Write markdown file
+            # Create output directory
             output_path.parent.mkdir(parents=True, exist_ok=True)
+
+            # 1. Save the full OCR response JSON (using SDK's native serialization)
+            ocr_json_path = output_path.with_suffix(".ocr.json")
+            with open(ocr_json_path, "w", encoding="utf-8") as f:
+                json.dump(ocr_response.model_dump(), f, indent=2, ensure_ascii=False)
+            logger.info(f"✓ Saved full OCR response: {ocr_json_path.name}")
+
+            # 2. Save the markdown file
             with open(output_path, "w", encoding="utf-8") as f:
                 f.write(markdown_content)
-
             logger.info(f"✓ Saved Markdown ({page_count} pages): {output_path.name}")
 
-            # Write metadata file
+            # 3. Write metadata file
             meta_path = output_path.with_suffix(".meta.json")
             metadata = {
                 "source_path": str(relative_path),
@@ -143,12 +156,17 @@ class MistralOCR:
                 "risk_profile": str(relative_path.parts[2] if len(relative_path.parts) > 2 else "n/a"),
                 "ocr_timestamp": datetime.now(timezone.utc).isoformat(),
                 "page_count": page_count,
-                "model": self.model
+                "model": self.model,
+                "table_format": "markdown",
+                "files": {
+                    "markdown": str(output_path.name),
+                    "ocr_json": str(ocr_json_path.name),
+                    "metadata": str(meta_path.name)
+                }
             }
 
             with open(meta_path, "w", encoding="utf-8") as f:
                 json.dump(metadata, f, indent=2, ensure_ascii=False)
-
             logger.info(f"✓ Saved metadata: {meta_path.name}")
 
             return output_path
