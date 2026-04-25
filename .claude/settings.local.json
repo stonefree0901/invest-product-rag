@@ -4,7 +4,15 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(git remote:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(/Users/fuli/Desktop/RAG_project/.venv/bin/python /Users/fuli/Desktop/RAG_project/scripts/run_embedding.py)",
+      "Bash(/Users/fuli/Desktop/RAG_project/.venv/bin/python:*)",
+      "Bash(/Users/fuli/Desktop/RAG_project/.venv/bin/pip list:*)",
+      "Bash(/Users/fuli/Desktop/RAG_project/.venv/bin/pip install:*)",
+      "Bash(/Users/fuli/Desktop/RAG_project/.venv/bin/pip uninstall:*)",
+      "Bash(python3 -m json.tool)",
+      "Bash(python3:*)",
+      "Bash(ls /Users/fuli/Desktop/RAG_project/data/ocr_markdown/*.md)"
     ]
   }
 }
