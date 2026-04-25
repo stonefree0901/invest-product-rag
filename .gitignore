@@ -28,10 +28,11 @@ ENV/
 credentials.json
 
 # Data and models
-dataset/
+data/
 *.pkl
 *.h5
 *.bin
+*.pdf
 
 # Logs
 *.log
