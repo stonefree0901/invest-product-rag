@@ -50,6 +50,7 @@ class MistralOCR:
         """Get environment variable."""
         import os
         return os.getenv(key)
+    
     @staticmethod
     def _encode_pdf_to_base64(pdf_path: Path) -> str:
         """
