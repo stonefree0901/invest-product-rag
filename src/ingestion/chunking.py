@@ -269,24 +269,34 @@ class DocumentChunker:
             paragraph: The paragraph content.
 
         Returns:
-            True if this paragraph is a list.
+            True if this paragraph is primarily a list (>50% of non-empty lines are list items).
         """
         lines = paragraph.strip().split('\n')
         if not lines:
             return False
 
-        # Check if at least 2 lines are list items
+        # Count non-empty lines and list items
+        non_empty_count = 0
         list_item_count = 0
         list_patterns = [r'^-\s', r'^\*\s', r'^•\s', r'^\d+\.\s']
 
         for line in lines:
-            import re
-            for pattern in list_patterns:
-                if re.match(pattern, line.strip()):
-                    list_item_count += 1
-                    break
+            stripped = line.strip()
+            if stripped:
+                non_empty_count += 1
+                import re
+                for pattern in list_patterns:
+                    if re.match(pattern, stripped):
+                        list_item_count += 1
+                        break
 
-        return list_item_count >= 2
+        # Consider it a list if >50% of non-empty lines are list items
+        # and we have at least 3 list items to avoid false positives
+        if non_empty_count == 0:
+            return False
+
+        list_ratio = list_item_count / non_empty_count
+        return list_ratio > 0.5 and list_item_count >= 3
 
     def _get_surrounding_blocks(self, blocks: List[Dict], table_index: int, context_blocks: int = 1) -> tuple:
         """

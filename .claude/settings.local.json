@@ -6,7 +6,11 @@
       "Bash(git remote:*)",
       "Bash(git push:*)",
       "Bash(ls /Users/fuli/Desktop/RAG_project/data/ocr_markdown/*.md)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(/Users/fuli/Desktop/RAG_project/.venv/bin/python /tmp/debug_chunking.py)",
+      "Bash(/Users/fuli/Desktop/RAG_project/.venv/bin/python /tmp/debug_chunking2.py)",
+      "Bash(/Users/fuli/Desktop/RAG_project/.venv/bin/python /tmp/debug_list.py)",
+      "Bash(/Users/fuli/Desktop/RAG_project/.venv/bin/python:*)"
     ]
   }
 }
