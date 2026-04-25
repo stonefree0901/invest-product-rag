@@ -4,7 +4,9 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "Bash(git remote:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(ls /Users/fuli/Desktop/RAG_project/data/ocr_markdown/*.md)",
+      "Bash(ls:*)"
     ]
   }
 }
