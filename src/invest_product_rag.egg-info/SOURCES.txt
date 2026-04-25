@@ -1,0 +1,10 @@
+README.md
+pyproject.toml
+src/ingestion/__init__.py
+src/ingestion/ocr.py
+src/invest_product_rag.egg-info/PKG-INFO
+src/invest_product_rag.egg-info/SOURCES.txt
+src/invest_product_rag.egg-info/dependency_links.txt
+src/invest_product_rag.egg-info/entry_points.txt
+src/invest_product_rag.egg-info/requires.txt
+src/invest_product_rag.egg-info/top_level.txt

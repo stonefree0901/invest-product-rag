@@ -61,3 +61,8 @@ python_version = "3.9"
 warn_return_any = true
 warn_unused_configs = true
 ignore_missing_imports = true
+
+[tool.uv]
+required-environments = [
+  "sys_platform == 'darwin' and platform_machine == 'x86_64'"
+]

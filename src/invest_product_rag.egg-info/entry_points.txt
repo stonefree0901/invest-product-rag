@@ -1,0 +1,2 @@
+[console_scripts]
+ingest = scripts.run_ingestion:main
