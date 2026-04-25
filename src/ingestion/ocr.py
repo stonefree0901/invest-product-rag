@@ -153,6 +153,7 @@ class MistralOCR:
                 "source_path": str(relative_path),
                 "company": str(relative_path.parts[0]),
                 "product_type": str(relative_path.parts[1] if len(relative_path.parts) > 1 else "unknown"),
+                #TODO: 所有非ready made investment product的都标记为n/a，包括ready made investment下面的guide也是n/a
                 "risk_profile": str(relative_path.parts[2] if len(relative_path.parts) > 2 else "n/a"),
                 "ocr_timestamp": datetime.now(timezone.utc).isoformat(),
                 "page_count": page_count,
