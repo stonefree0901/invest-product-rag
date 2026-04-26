@@ -29,6 +29,8 @@ credentials.json
 
 # Data and models
 data/
+!data/evaluation/
+!data/evaluation/basic_questions.jsonl
 *.pkl
 *.h5
 *.bin
