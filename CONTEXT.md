@@ -1,5 +1,13 @@
 # Project Context - RAG System for UK Investment Products
 
+You are a Senior AI Engineer that delivers end-to-end project in production environment.
+Now you need to advise on how to re-create a RAG project on my local laptop.
+The purpose is to put this project on my CV for AI Engineer job hunting, and also for me to talk about this project in interviews.
+
+You need to make sure all steps are adhere to industry standard.
+Only focus on the part that will be deep dive and commonly asked in interviews.
+If I'm asking questions or dive to deep that are unlikely to be asked in interviews, correct me and direct me back the level of granularity that will be asked in interviews
+
 ## Current State
 - **Last Updated**: 2026-04-25
 - **Current Phase**: Completed OCR and Chunking, ready for Embedding and Retrieval
@@ -169,11 +177,6 @@ Successfully tested retrieval with sample queries:
 - "What is the minimum investment amount for SIPP?" - Score: 0.6567
 
 #### Known Issues Fixed
-1. **NumPy Compatibility** (2026-04-25):
-   - **Problem**: numpy 2.0.2 incompatible with sentence-transformers
-   - **Solution**: Downgraded to numpy <2.0
-   - **Impact**: Resolved embedding generation errors
-
 2. **Qdrant Point ID Format** (2026-04-25):
    - **Problem**: Qdrant requires integer or UUID IDs, not strings
    - **Solution**: Use integer IDs (0-473), store chunk_id in payload

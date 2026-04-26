@@ -12,7 +12,8 @@
       "Bash(/Users/fuli/Desktop/RAG_project/.venv/bin/pip uninstall:*)",
       "Bash(python3 -m json.tool)",
       "Bash(python3:*)",
-      "Bash(ls /Users/fuli/Desktop/RAG_project/data/ocr_markdown/*.md)"
+      "Bash(ls /Users/fuli/Desktop/RAG_project/data/ocr_markdown/*.md)",
+      "Read(//Users/fuli/.claude/**)"
     ]
   }
 }
